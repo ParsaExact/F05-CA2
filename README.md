@@ -19,3 +19,20 @@ preparation) throws `FlightException`.
 - `Engine.fail()` can simulate an engine failure during a flight.
 - `NavigationSystem.setRouteAvailable(...)` can change route availability.
 - Mockito and JUnit 5 dependencies are already configured with test scope in `pom.xml`.
+
+## Tests
+
+Interaction tests built with Mockito test doubles live in
+`src/test/java/airplane/AircraftTest.java`. Every component of `Aircraft` is a
+Mockito double; the tests stub component behaviour (`when/thenReturn`,
+`thenThrow`, `doNothing/doThrow`) and verify how the aircraft talks to its
+components (`verify`, `times`, `never`, `InOrder`, `reset`, argument matchers).
+
+Run them with:
+
+```bash
+mvn test
+```
+
+See `REPORT.md` for the mapping from each required Mockito concept to the test
+that uses it and the reasoning behind each test.
